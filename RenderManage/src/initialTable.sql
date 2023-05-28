@@ -6,10 +6,19 @@ set timing on
 spool /home/nliang/DB/Project/result.log
 --
 
+-- CREATE TABLE Address (
+--	Id INT PRIMARY KEY,
+--	Street VARCHAR,
+--	City VARCHAR,
+--	ZipCode VARCHAR
+--);
+
 create table Branch(
 	BranchNumber int primary key,
 	BranchPhone numeric(20) unique not null,
-    AddressId int FOREIGN KEY REFERENCES Address(AddressId)
+    Street VARCHAR,
+	City VARCHAR,
+	ZipCode VARCHAR
 );
 
 create table Employee(
@@ -28,31 +37,38 @@ CREATE TABLE OWNER(
 	OwnerId int PRIMARY KEY,
 	OwnerPhone numeric(20),
 	OwnerName varchar2(20),
-	AddressId int FOREIGN KEY REFERENCES Address(AddressId)
+	Street VARCHAR,
+	City VARCHAR,
+	ZipCode VARCHAR
 );
 
 CREATE TABLE RentalProperty(
 	RPNumber numeric(20) primary key, 
-	AddressId varchar2(50) FOREIGN KEY REFERENCES Address(AddressId),
-	RoomNo int CHECK(RoomNo > 0),
+	Street VARCHAR,
+	City VARCHAR,
+	ZipCode VARCHAR,
+	NoOfRooms int CHECK(RoomNo > 0),
 	Rent real CHECK(rent >= 0),
 	PropertyStatus VARCHAR(20) CHECK(PropertyStatus IN ('available', 'not-available' ,' leased')),
-	OwnerPhone numeric(20),
-	FOREIGN KEY (OwnerPhone) REFERENCES  OWNER(OwnerPhone)
+	StartAvlDate DATE,
+	OwnerId int,
+	FOREIGN KEY (OwnerId) REFERENCES  OWNER(OwnerId)
 );
-
 
 
 CREATE TABLE LeaseAggrement(
 	AgreementId int PRIMARY KEY,
 	RPNumber numeric(20),
+	RPStreet varchar,
+	RPCity varchar,
+	RPZipCode varchar,
 	RenterName varchar2(20),
 	RenterHomePhone numeric(20) unique,
 	RenterWorkPhone numeric(20) unique,
-	rent real CHECK(rent >= 0),
-	Deposite real ,
+	Rent real CHECK(rent >= 0),
+	Deposit real ,
 	StartDate DATE,
-	duration int,
+	Duration int,
 	EndDate DATE ,
 	primary key(RPNumber, RenterName ),
 	FOREIGN KEY (RPNumber) REFERENCES  RentalProperty(RPNumber)
