@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Branch</title>
+</head>
+<body>
+  <h2>Select Branch</h2>
+
+  <!-- This form redirects to the 'showBranch.php' script when submitted -->
+  <form action="showBranch.php" method="post">
+    <label for="branch">Branch:</label><br>
+    
+    <select id="branch" name="branch">
+      <!-- Options are filled by the procBranchSelection.php script -->
+    </select><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- This script fetches the branch options from the database -->
+  <script src="procBranchSelection.php"></script>
+</body>
+</html>
