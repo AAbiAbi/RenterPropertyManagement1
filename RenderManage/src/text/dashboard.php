@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
   header("Location: login.php");
   exit;
 }
@@ -35,7 +35,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="login.php">Logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>
     </div>
@@ -47,7 +47,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           <div class="row">
             <div class="col">
               <hr>
-              <h4>Welcome to the dashboard</h4>
+              <h4>Welcome to the dashboard, <?php echo htmlspecialchars($_SESSION["name"]);?></h4>
               <hr>
             </div>
           </div>

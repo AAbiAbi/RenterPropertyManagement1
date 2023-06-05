@@ -4,34 +4,34 @@ $conn = oci_connect('nliang', '12345Jxtsz', '//oracle.engr.scu.edu:/db11g');
 
 session_start();
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
   header("Location: dashboard.php");
   exit;
-}
+} else {
 
-$id = $name = "";
-$id_err = $name_err = "";
+  $id = $name = "";
+  $id_err = $name_err = $login_err="";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  // Validate the ID and Name fields
-  if (empty(trim($_POST["id"]))) {
-    $id_err = "Please enter your ID.";
-  } else {
-    $id = trim($_POST["id"]);
-  }
-  
-  if (empty(trim($_POST["name"]))) {
-    $name_err = "Please enter your name.";
-  } else {
-    $name = trim($_POST["name"]);
-  }
-  
-  // Check if there are no validation errors
-  if (empty($id_err) && empty($name_err)) {
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Validate the ID and Name fields
+    if (empty(trim($_POST["id"]))) {
+      $id_err = "Please enter your ID.";
+    } else {
+      $id = trim($_POST["id"]);
+    }
+
+    if (empty(trim($_POST["name"]))) {
+      $name_err = "Please enter your name.";
+    } else {
+      $name = trim($_POST["name"]);
+    }
+
+    // Check if there are no validation errors
+    if (empty($id_err) && empty($name_err)) {
       $param_id = trim($_POST["id"]);
       $param_name = trim($_POST["name"]);
 
-      $query = oci_parse($conn, "select * from Employee where EmployeeId= :param_id and EmpName= :param_name");
+      $query = oci_parse($conn, "SELECT * FROM Employee WHERE EmployeeId = :param_id AND EmpName = :param_name");
       oci_bind_by_name($query, ":param_id", $param_id);
       oci_bind_by_name($query, ":param_name", $param_name);
       oci_execute($query);
@@ -41,22 +41,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       echo "nrow " . $nrows;
 
       if ($nrows == 1) {
-          session_start();
-          // Store data in session variables
-          $_SESSION["loggedin"] = true;
-          $_SESSION["name"] = $name;
+        session_start();
+        // Store data in session variables
+        $_SESSION["loggedin"] = true;
+        $_SESSION["name"] = $name;
 
-          // Redirect user to welcome page
-          header("location: dashboard.php");
+        // Redirect user to dashboard page
+        header("location: dashboard.php");
+        exit;
       } else {
-          // phone number doesn't exist, display a generic error message
-          $login_err = "Invalid id or name";
+        // ID and name combination is invalid, display an error message
+        $login_err = "Invalid ID or name.";
       }
+    }
   }
 }
-   // oci_close($conn);
-  
 
+oci_close($conn);
 ?>
 
 <!doctype html>
@@ -86,20 +87,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="col-md-6">
         <div class="card custom-card">
           <div class="card-body custom-card-body">
-  
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <?php
+              if(!empty($login_err)){
+                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+              }
+            ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
               <div class="form-group">
-                
                 <input type="text" class="form-control" id="id" name="id" placeholder="Enter Employee ID" value="<?php echo htmlspecialchars($id); ?>">
                 <span class="text-danger"><?php echo $id_err; ?></span>
               </div>
               <div class="form-group">
-                
                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Employee Name" value="<?php echo htmlspecialchars($name); ?>">
                 <span class="text-danger"><?php echo $name_err; ?></span>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary custom-submit-button">Login</button>
+              </div>
+              <div class="text-center mt-3">
+                <span class="text-danger"><?php echo $login_err; ?></span>
               </div>
             </form>
           </div>

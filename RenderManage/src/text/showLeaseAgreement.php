@@ -21,7 +21,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="login.php">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
   </div>
