@@ -1,0 +1,159 @@
+/* strawberry-theme.css */
+
+.strawberry-theme {
+    background-color: #f6d7d7; /* Light red color */
+    color: #500000; /* Dark red color */
+  }
+  
+  .sidebar {
+    background-color: #98FB98; /* Light green color */
+    color: #500000; /* Dark red color */
+    z-index: 1; /* Ensure the sidebar is positioned above other elements */
+
+  }
+  
+  .sidebar .list-group-item {
+    background-color: #f6d7d7; /* Light red color */
+    color: #500000; /* Dark red color */
+  }
+  
+  .sidebar .list-group-item:hover {
+    background-color: #98FB98; /* Light green color */
+    color: #500000; /* Dark red color */
+  }
+  
+  .btn-primary {
+    background-color: #a50b0b; /* Darker red color */
+    border: none;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: #212529;
+    background-color: #f8f9fa;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+    
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:focus {
+    background-color: #500000; /* Dark red color */
+    border: none;
+  }
+  
+  /* Add a custom font for the title */
+  .h1,
+  .h2,
+  .h3 {
+    font-family: 'Pacifico', cursive; /* Example of a more "artistic" font */
+  }
+  
+  /* Left Side (Sidebar) */
+#sidebar {
+    background-color: #90ee90; /* Light green color */
+    padding: 10px;
+    height: 100vh; /* Full height */
+    width: 250px; /* Adjust width as needed */
+    margin-left: -20px;  /* Adjust this value to your liking */
+    position: fixed; 
+    z-index: 2;
+}
+#sidebar .list-group-item-action {
+    background-color: #90EE90;  /* Set this to the color of your sidebar */
+}
+
+
+/* Right Side (Main Content) */
+#content {
+    margin-left: 250px; /* Adjust this value to match the width of your sidebar */
+    padding: 10px;
+}
+
+  /* If you have a custom strawberry icon, you could add it like this */
+  .strawberry-icon {
+    background-image: url('strawberry-icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50px;  /* adjust as needed */
+    height: 50px; /* adjust as needed */
+  }
+  /* Custom CSS for the Calculate Average Rent section */
+#averageRentSection {
+  margin-top: 20px;
+}
+
+#averageRentSection h2 {
+  font-size: 24px;
+  color: #f9546e;
+  margin-bottom: 10px;
+}
+
+#averageRentSection form {
+  margin-bottom: 20px;
+}
+
+#averageRentSection label {
+  font-weight: bold;
+  color: #333;
+}
+
+#averageRentSection input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#averageRentSection input[type="submit"] {
+  padding: 8px 16px;
+  background-color: #f9546e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#averageRentSection input[type="submit"]:hover {
+  background-color: #e53e5a;
+}
+
+#averageRentForm {
+  margin-top: 20px;
+}
+
+#averageRentForm h2 {
+  font-size: 24px;
+  color: #f9546e;
+  margin-bottom: 10px;
+}
+
+#averageRentForm .form-group {
+  margin-bottom: 15px;
+}
+
+#averageRentForm label {
+  font-weight: bold;
+  color: #333;
+}
+
+#averageRentForm select.form-control {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#averageRentForm button[type="submit"] {
+  padding: 8px 16px;
+  background-color: #f9546e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#averageRentForm button[type="submit"]:hover {
+  background-color: #e53e5a;
+}

@@ -1,0 +1,148 @@
+/* rentalManagement.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f6d7d7;
+    color: #500000;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .main-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .section-container {
+    margin-bottom: 20px;
+  }
+  
+  .section-container h2 {
+    font-size: 24px;
+    color: #500000;
+    margin-bottom: 10px;
+  }
+  
+  .section-container form {
+    margin-bottom: 20px;
+  }
+  
+  .section-container label {
+    font-weight: bold;
+    color: #500000;
+  }
+  
+  .section-container input[type="text"],
+  .section-container select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .section-container input[type="submit"],
+  .section-container button {
+    padding: 8px 16px;
+    background-color: #a50b0b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .section-container input[type="submit"]:hover,
+  .section-container button:hover {
+    background-color: #500000;
+  }
+  
+  #rentersModal .modal-content {
+    background-color: #f6d7d7;
+    color: #500000;
+    padding: 20px;
+  }
+  
+  #rentersModal .modal-content h3 {
+    font-size: 24px;
+    color: #500000;
+    margin-bottom: 10px;
+  }
+  
+  #expiringSoonForm button {
+    padding: 8px 16px;
+    background-color: #a50b0b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #expiringSoonForm button:hover {
+    background-color: #500000;
+  }
+  
+  #expiringSoonList {
+    margin-top: 10px;
+    background-color: #f6d7d7;
+    color: #500000;
+    padding: 10px;
+  }
+  
+  #calculateEarningsButton {
+    padding: 8px 16px;
+    background-color: #a50b0b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #calculateEarningsButton:hover {
+    background-color: #500000;
+  }
+  
+  #earnings {
+    margin-top: 10px;
+    background-color: #f6d7d7;
+    color: #500000;
+    padding: 10px;
+  }
+  
+
+  .sidebar {
+    background-color: #98FB98; /* Light green color */
+    color: #500000; /* Dark red color */
+    z-index: 1; /* Ensure the sidebar is positioned above other elements */
+
+  }
+  
+  .sidebar .list-group-item {
+    background-color: #f6d7d7; /* Light red color */
+    color: #500000; /* Dark red color */
+  }
+  
+  .sidebar .list-group-item:hover {
+    background-color: #98FB98; /* Light green color */
+    color: #500000; /* Dark red color */
+  }
+  
+  .btn-primary {
+    background-color: #a50b0b; /* Darker red color */
+    border: none;
+  }
+
+  #sidebar {
+    background-color: #90ee90; /* Light green color */
+    padding: 10px;
+    height: 100vh; /* Full height */
+    width: 250px; /* Adjust width as needed */
+    margin-left: -20px;  /* Adjust this value to your liking */
+    position: fixed; 
+    z-index: 2;
+}
+#sidebar .list-group-item-action {
+    background-color: #90EE90;  /* Set this to the color of your sidebar */
+}

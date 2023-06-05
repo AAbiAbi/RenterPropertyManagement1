@@ -4,11 +4,11 @@ $conn = oci_connect('nliang', '12345Jxtsz', '//oracle.engr.scu.edu:/db11g');
  if($conn) {
     print "<br> connection successful"; 
     print "<br>hahaxxx";
-    $stid = oci_parse($conn, "SELECT * FROM Branch WHERE branch_name = :branch");
-    oci_bind_by_name($stid, ":branch", $branch);
-    oci_execute($stid);
-    if($stid){ print("haha");}
-    print("hahahhh");
+    // $stid = oci_parse($conn, "SELECT * FROM Branch WHERE branch_name = :branch");
+    // oci_bind_by_name($stid, ":branch", $branch);
+    // oci_execute($stid);
+    // if($stid){ print("haha");}
+    // print("hahahhh");
    
 } else {
     $e = oci_error();

@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Select Branch</title>
+  <title>Welcome to StrawberryField's Rental Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="strawberry-theme.css"> 
+  <!-- Your custom strawberry-themed CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <h2>Select Branch</h2>
+<body class="strawberry-theme">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 d-none d-md-block bg-light sidebar" >
+        <h1 class="display-4 my-3 text-center">StrawberryField</h1>
+       
+        <div class="list-group" id="sidebar">
+            <div class="strawberry-icon"></div>
+             <!-- Your sidebar content goes here -->
+            <a href="showBranch.html" class="list-group-item list-group-item-action">Select Branch</a>
+            <a href="showManager.html" class="list-group-item list-group-item-action">Select Manager</a>  
+        </div>
+      </div>
 
-  <!-- This form redirects to the 'showBranch.php' script when submitted -->
-  <form action="showBranch.php" method="post">
-    <label for="branch">Branch:</label><br>
-    
-    <select id="branch" name="branch">
-      <!-- Options are filled by the procBranchSelection.php script -->
-    </select><br>
-    
-    <input type="submit" value="Submit">
-  </form>
+      <div class="col-9" id="content">
+        <h1>Welcome to StrawberryField's Rental Management</h1>
+        <h2 class="mt-5">Search Properties</h2>
+        <form id="propertySearchForm" action="property_listing.php" method="get" class="mb-5">
+          <div class="form-group">
+            <label for="city">City:</label>
+            <select id="city" name="city" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label for="rooms">Number of Rooms:</label>
+            <select id="rooms" name="rooms" class="form-control">
+              <option value="">-- Select Number of Rooms --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="3">4</option>
+              <!-- Add more room options as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="minRent">Minimum Rent:</label>
+            <input type="number" id="minRent" name="minRent" min="0" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="maxRent">Maximum Rent:</label>
+            <input type="number" id="maxRent" name="maxRent" min="0" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
 
-  <!-- This script fetches the branch options from the database -->
-  <script src="procBranchSelection.php"></script>
+        <h2> </h2>
+        <div id="propertyList" class="list-group"></div>
+
+
+
+		<div id="averageRentSection">
+			<h2>Calculate Average Rent</h2>
+			<form id="averageRentForm" action="averageRent.php" method="post" class="mb-5">
+				<div class="form-group">
+				  <label for="town">Town:</label>
+				  <select id="town" name="town" class="form-control"></select>
+				</div>
+				<button type="submit" class="btn btn-primary">Calculate</button>
+			  </form>
+			  <div id="averageRentResult"></div>
+		  </div>
+        <!-- Your JavaScript code goes here -->
+        <!-- Insert your JavaScript code here -->
+      </div>
+	  
+    </div>
+
+  </div>
+  <!-- Your JavaScript code goes here -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="index.js"></script>
+ 
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to StrawberryField's Rental Management</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Select Manager</h2>
+  <!-- The dropdown list will be populated immediately -->
+  <!-- <select id="branch" name="branch"> -->
+    <form action="showManager.php" method="post">
+      <label for="manager">Manager:</label><br>
+      <select id="manager" name="manager">
+        <!-- Options will be dynamically filled by the script -->
+      </select><br>
+      <input type="submit" value="Submit">
+    </form>
+    
+    <!-- Options will be dynamically filled by the script -->
+  <!-- </select> -->
+  <!-- <button id="submitButton">Submit</button> -->
+  <script>
+    
+       // Function to populate the manager dropdown based on the selected branch
+       function populateManagerDropdown() {
+        $.ajax({
+          type: 'GET',
+          url: 'procManagerSelection.php',
+          dataType: 'text',
+        //   data: { branch: branch },
+          success: function(response) {
+            var options = response.split('\n');
+            var select = $('#manager');
+
+            // Clear existing options
+            select.empty();
+
+            // Append new options
+            $.each(options, function(index, option) {
+              if (option !== '') {
+                select.append($('<option>').val(option).text(option));
+              }
+            });
+          }
+        });
+      }
+      populateManagerDropdown();
+      // Event listener for the branch dropdown change
+    //   $('#branch').on('change', function() {
+    //     var selectedBranch = $(this).val();
+
+    //     // Call the function to populate the manager dropdown with the selected branch
+    //     populateManagerDropdown(selectedBranch);
+    //   });
+
+      // Call the function to populate the manager dropdown when the page loads
+    //   var selectedBranch = $('#branch').val();
+    //   populateManagerDropdown(selectedBranch);
+   
+    // });
+  </script>
+</body>
+
+
+</html>

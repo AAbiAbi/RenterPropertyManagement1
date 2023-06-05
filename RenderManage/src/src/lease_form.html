@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lease Agreement Form</title>
+</head>
+<body>
+  <h1>Lease Agreement Form</h1>
+  <div id="propertyDetails"></div>
+  <form action="generate_lease.php" method="POST" target="_blank">
+    <!-- Hidden field to store propertyId -->
+    <input type="hidden" id="propertyId" name="propertyId">
+
+    <label for="renterName">Renter Name:</label><br>
+    <input type="text" id="renterName" name="renterName"><br>
+    
+    <label for="renterHomePhone">Renter Home Phone:</label><br>
+    <input type="text" id="renterHomePhone" name="renterHomePhone"><br>
+    
+    <label for="renterWorkPhone">Renter Work Phone:</label><br>
+    <input type="text" id="renterWorkPhone" name="renterWorkPhone"><br>
+    
+    <!-- <label for="rent">Rent:</label><br>
+    <input type="number" id="rent" name="rent" min="0"><br> -->
+
+    <label for="startDate">Start Date:</label><br>
+    <input type="date" id="startDate" name="startDate"><br>
+
+    <label for="endDate">End Date:</label><br>
+    <input type="date" id="endDate" name="endDate"><br>
+
+    <input type="submit" name="generateLease" value="Generate Lease Agreement">
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var propertyId = urlParams.get('propertyId');
+        
+      // Set the hidden field's value to the propertyId
+      $('#propertyId').val(propertyId);
+      console.log("AJAX request completed.");
+        $.ajax({
+        url: 'property_details.php',
+        data: { propertyId: propertyId },
+        type: 'get',
+        dataType: 'json',
+        success: function(property) {
+            var propertyDetails = `
+            <p><strong>Property ID:</strong> ${property.RPNUMBER}</p>
+            <p><strong>Street:</strong> ${property.STREET}</p>
+            <p><strong>City:</strong> ${property.CITY}</p>
+            <p><strong>Zip:</strong> ${property.ZIPCODE}</p>
+            <p><strong>No. of Rooms:</strong> ${property.ROOMNO}</p>
+            <p><strong>Property Status:</strong> ${property.PROPERTYSTATUS}</p>
+            <p><strong>Owner Phone:</strong> ${property.OWNERPHONE}</p>
+            <p><strong>Rent:</strong> ${property.RENT}</p>
+            `;
+            $('#propertyDetails').html(propertyDetails);
+            console.log(property);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error:', textStatus, errorThrown);
+            },
+            complete: function() {
+                console.log("AJAX request completed.");
+            }
+        });
+    });
+  </script>
+</body>
+</html>

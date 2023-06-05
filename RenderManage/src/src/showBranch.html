@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to StrawberryField's Rental Management</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <link rel="stylesheet" href="showBranch.css">
+  <link rel="stylesheet" href="rentalManagement.css">
+</head>
+<body class="strawberry-theme">
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-3 d-none d-md-block bg-light sidebar">
+      <h1 class="display-4 my-3 text-center">StrawberryField</h1>
+      <div class="list-group" id="sidebar">
+        <div class="strawberry-icon"></div>
+        <a href="showBranch.html" class="list-group-item list-group-item-action">Select Branch</a>
+        <a href="showManager.html" class="list-group-item list-group-item-action">Select Manager</a>  
+      </div>
+    </div>
+
+    <div class="col-9" id="content">
+      <h1 class="main-title">StrawberryField's Rental Management</h1>
+        
+      <div class="section-container" id="branchSection">
+        <h2>Select Branch</h2>
+        <form action="showBranch.php" method="post">
+          <label for="branch">Branch:</label><br>
+          <select id="branch" name="branch"></select>
+          <input type="hidden" id="branchNumber" name="branchNumber">
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+      <div class="section-container">
+        <h2>Select Owner</h2>
+        <form action="owner_property.php" method="post">
+          <label for="ownerName">Owner Name:</label><br>
+          <input type="text" id="ownerName" name="ownerName"><br>
+
+          <label for="ownerPhone">Owner Phone:</label><br>
+          <input type="text" id="ownerPhone" name="ownerPhone"><br>
+
+          <label for="branch">Branch No:</label><br>
+          <select id="branchNo" name="branch"></select>
+          <input type="hidden" id="branchNumber" name="branchNumber">
+    
+          <input type="submit" value="Search">
+        </form>
+      </div>
+
+      <div class="section-container">
+        <h2>Find Lease Agreement</h2>
+        <form id="leaseForm" action="showLeaseAgreement.php" method="post">
+          <label for="renterPhone">Enter Renter Phone:</label><br>
+          <input type="text" id="renterHomePhone" name="renterHomePhone" required><br>
+          <input type="submit" value="Search">
+        </form>
+      </div>
+
+      <div class="section-container">
+        <h2>Find Renters with Multiple Properties</h2>
+        <button id="fetchMultipleRenters">Show Renters with Multiple Rentals</button>
+      </div>
+
+      <div id="rentersModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3>Renters with Multiple Rentals</h3>
+          <div id="modalRentersList"></div>
+        </div>
+      </div>
+
+      <div class="section-container">
+        <h2>Expiring Soon</h2>
+        <form id="expiringSoonForm" action="expiringProperties.php" method="post">
+          <button id="expiringSoonButton" type="button">Expiring Soon</button>
+        </form>
+        <div id="expiringSoonList"></div>
+      </div>
+
+      <div class="section-container">
+        <h2>Monthly Earnings</h2>
+        <button id="calculateEarningsButton">Calculate Earnings</button>
+        <div id="earnings"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="showBranch.js"></script>
+  <script src="fetchMultipleRenters.js"></script>
+  <script src="expiringsoon.js"></script>
+  <script src="monthlyEarn.js"></script>
+</body>
+</html>
