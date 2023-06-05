@@ -1,0 +1,52 @@
+.custom-card {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-card-header {
+    background-color: #ffffff;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .custom-card-body {
+    padding: 20px;
+  }
+
+  .custom-title {
+    font-size: 24px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 30px;
+  }
+
+  .custom-form-label {
+    font-weight: 600;
+    color: #333333;
+  }
+
+  .custom-submit-button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    color: #ffffff;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .custom-submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  .custom-footer {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .custom-footer-text {
+    font-size: 14px;
+    color: #999999;
+  }

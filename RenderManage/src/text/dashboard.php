@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+  header("Location: login.php");
+  exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -21,10 +31,11 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href=" ">Strawberry Rental Property Management Inc</a>
+    <a class="navbar-brand" href="#">Strawberry Rental Property Management Inc</a>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <a class="nav-link" href="login.php">Logout</a>
         </li>
       </ul>
     </div>
