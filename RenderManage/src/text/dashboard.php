@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 
-if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit;
 }
@@ -15,31 +14,14 @@ if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title></title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-  <style>
-    /* Custom styles for the modal */
-    .modal {
-      background-color: grey; /* Change the background color */
-    }
-  
-    .modal-content {
-      width: 100px; /* Change the width of the modal */
-    }
-  </style>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Strawberry Rental Property Management Inc</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<?php include 'navbar.php'; ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col">
@@ -98,8 +80,8 @@ if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
                     <input type="submit" value="Search"class="btn btn-primary btn-block">
                   </div>
                 </div>
-                <hr>
-                <br>
+              <hr>
+              <br>
               </form>
             </div>
           </div>
@@ -109,24 +91,24 @@ if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
           <div class="row">
             <div class="col">
               <div id="averageRentSection">
-                <h5>Calculate Average Rent</h5>
-                <form id="averageRentForm" action="averageRent.php" method="post" class="mb-5">
-                  <div class="form-row align-items-center">
-                    <div class="col-md-1">
-                      <label for="town">Town:</label>
-                    </div>
-                    <div class="col-md-6 mb-2 mb-md-0">
-                      <select id="town" name="town" class="form-control"></select>
-                    </div>
-                    <div class="col-md-5">
-                      <button type="submit" class="btn btn-primary btn-block">Calculate</button>
-                    </div>
+              <h5>Calculate Average Rent</h5>
+              <form id="averageRentForm" action="averageRent.php" method="post" class="mb-5">
+                <div class="form-row align-items-center">
+                  <div class="col-md-1">
+                    <label for="town">Town:</label>
                   </div>
-                </form>
-              </div>
+                  <div class="col-md-6 mb-2 mb-md-0">
+                    <select id="town" name="town" class="form-control"></select>
+                  </div>
+                  <div class="col-md-5">
+                    <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
               <div class="col" id="averageRentResult"></div>
               <hr>
-            </div>
+          </div>
           </div>
         </div>
 
@@ -157,16 +139,7 @@ if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
       <div id="modalRentersList"></div>
     </div>
   </div>
-  <footer class="bg-dark text-white py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          &copy; 2023 Strawberry Rental Property Management Inc. All rights reserved.
-          <a href="contact.html" class="text-white ml-2">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include 'footer.php'; ?>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

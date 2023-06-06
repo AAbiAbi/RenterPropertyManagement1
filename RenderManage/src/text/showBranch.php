@@ -17,6 +17,8 @@ $branch_row = oci_fetch_array($stid_branch, OCI_ASSOC+OCI_RETURN_NULLS);
 echo "<h2>Branch Details</h2>";
 
 echo "<p>" ;
+echo "<div class='table-responsive'>";
+echo "<table class='table table-bordered table-sm custom-table'>";
 if ($branch_row) {
     foreach ($branch_row as $key => $value) {
         // Customize the label based on the attribute name
@@ -41,11 +43,11 @@ if ($branch_row) {
         
         // Display the attribute with the custom label
         
-        echo  $label . ": " . $value ;
-        echo "<br>";
+        echo "<tr><td><strong>" . $label . "</strong></td><td>" . $value . "</td></tr>";
+       
     }
+    echo "</table>";
 }
-echo "</p>" ;
 
 if ($branch_row) {
     //foreach ($branch_row as $item) {
@@ -79,6 +81,7 @@ if ($branch_row) {
     
     echo "</table>";
     echo "<br>\n";
+   
     // Retrieve rental properties available for the selected branch
     $stid_properties = oci_parse($conn, "SELECT * 
     FROM RentalProperty 

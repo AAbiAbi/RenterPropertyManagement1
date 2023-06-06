@@ -15,7 +15,8 @@ oci_execute($stid_manager);
 $manager_row = oci_fetch_array($stid_manager, OCI_ASSOC+OCI_RETURN_NULLS);
 
 echo "<h2>Manager Details</h2>";
-echo "<p>" ;
+echo "<div class='table-responsive'>";
+echo "<table class='table table-bordered table-sm custom-table'>";
 if ($manager_row) {
     foreach ($manager_row as $key => $value) {
         
@@ -44,11 +45,11 @@ if ($manager_row) {
         
         // Display the attribute with the custom label
         
-        echo  $label . ": " . $value ;
-        echo "<br>";
-    }
+        echo "<tr><td><strong>" . $label . "</strong></td><td>" . $value . "</td></tr>";
+       
+    }echo "</table>";
 }
-echo "</p>" ;
+
 
 if($manager_row){
     echo "<br>\n";
