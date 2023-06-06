@@ -11,21 +11,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="dashboard.php">Strawberry Rental Property Management Inc</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="dashboard.php">Dashboard</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<?php include_once 'navbar.php' ?>
 
   <div class="container-fluid">
     <div class="row">
@@ -59,7 +45,9 @@
             <th>Start Date</th>
             <th>End Date</th>
           </tr>";
+          $found=false;
     while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+      $found=true;
         echo "<tr>";
         foreach ($row as  $column => $value) {
             echo "<td>" . ($value !== null ? htmlentities($value, ENT_QUOTES) : "&nbsp;") . "</td>";
@@ -68,7 +56,11 @@
     }
     
     echo "</table>";
-    echo "</div>";
+
+    if(!$found){
+      echo "<div class='text-danger'>No expiring soon lease agreements found.<div>";
+    }
+    
 
 oci_free_statement($stid);
 // Close the Oracle connection
@@ -82,18 +74,10 @@ oci_close($conn);
         </div>
       </div>
     </div>
+    <?php include_once 'footer.php' ?>
   </div>
   
-  <footer class="bg-dark text-white py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          &copy; 2023 Strawberry Rental Property Management Inc. All rights reserved.
-          <a href="contact.html" class="text-white ml-2">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

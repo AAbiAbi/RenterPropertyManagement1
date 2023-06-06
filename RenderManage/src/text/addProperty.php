@@ -35,10 +35,10 @@ $result = oci_execute($stid);
 // Check if the insertion was successful
 if ($result) {
     // Display a success message or perform any other action
-    echo "New rental property inserted successfully!";
+    echo "<div class='text-success'>New rental property added successfully!<div>";
 } else {
     // Display an error message or perform any other action
-    echo "Error inserting new rental property.";
+    echo "<div class='text-danger'>Error inserting new rental property.</div>";
 }
 
 // Close the Oracle connection

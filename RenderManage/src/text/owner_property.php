@@ -56,7 +56,9 @@ if (empty($_POST['ownerPhone'])) {
               <th>Property Status</th>
               <th>Owner Phone</th>
           </tr>";
+          $found=false;
     while ($propertyRow = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+$found=true;
       echo "<tr>";
       foreach ($propertyRow as $item) {
           echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>";
@@ -66,8 +68,9 @@ if (empty($_POST['ownerPhone'])) {
   echo "</table>";
   
   oci_free_statement($stid);
-
-  
+if(!$found){
+  echo "<div class='text-danger'>No rental properties found for this owner.<div>";
+}
   oci_close($conn);
 
 

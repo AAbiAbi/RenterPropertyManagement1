@@ -11,21 +11,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="dashboard.php">Strawberry Rental Property Management Inc</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="dashboard.php">Dashboard</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<?php include_once 'navbar.php' ?>
   
  <div class="container-fluid">
   <div class="row">
@@ -55,6 +41,7 @@
      </div>
     <div id="manager-results" class="container"></div>
    </div>
+   <?php include_once 'footer.php' ?>
     </div>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>

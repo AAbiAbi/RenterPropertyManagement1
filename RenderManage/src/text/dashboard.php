@@ -35,16 +35,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           </div>
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <a href="branch.html" class="btn btn-primary btn-block mt-3">Show Branch Details</a>
+              <a href="branch.php" class="btn btn-primary btn-block mt-3">Show Branch Details</a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <a href="manager.html" class="btn btn-primary btn-block mt-3">Show Manager Details</a>
+              <a href="manager.php" class="btn btn-primary btn-block mt-3">Show Manager Details</a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <a href="ownerProperties.html" class="btn btn-primary btn-block mt-3">Show All Rental Properties For A Owner</a>
+              <a href="ownerProperties.php" class="btn btn-primary btn-block mt-3">Show All Rental Properties For A Owner</a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <a href="searchProperties.html" class="btn btn-primary btn-block mt-3">Search Properties</a>
+              <a href="searchProperties.php" class="btn btn-primary btn-block mt-3">Search Properties</a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
               <!--<a href="renter.html" class="btn btn-primary btn-block mt-3">Show Frequent Renters</a>-->
@@ -131,6 +131,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <div class="container"></div>
       </div>
     </div>
+    <?php include_once 'footer.php' ?>
   </div>
   <!--<div id="rentersModal" class="container">
     <div class="content">
@@ -155,7 +156,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </div>
   </div>
   
-
+  v>
+    </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="fetchMultipleRenters.js"></script>

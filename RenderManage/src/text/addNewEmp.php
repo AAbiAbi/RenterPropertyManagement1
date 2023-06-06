@@ -41,13 +41,14 @@ oci_bind_by_name($stid, ":branch", $branch);
 oci_bind_by_name($stid, ":managerID", $managerID);
 
 // Execute the SQL statement
-oci_execute($stid);
+$result = oci_execute($stid);
 
-
-    // Display a success message or perform any other action
-    echo "New employee inserted successfully!";
-
-   
+if(!$result){
+    echo "<div class='text-danger'>Cannot add new supervisor!<div>";
+    exit;
+}else{
+    echo "<div class='text-success'>New employee inserted successfully!<div>";
+}
 
 // Close the Oracle connection
 oci_close($conn);

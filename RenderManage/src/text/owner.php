@@ -63,7 +63,7 @@
                 <button type="button" id="ownerAdd-select" class="btn btn-primary btn-block">Add</button>
                  </div>
                  <div class="form-group col-3">
-                 <a type="button" href="ownerProperties.html" class="btn btn-secondary btn-block">Cancel</a>
+                 <a type="button" href="ownerProperties.php" class="btn btn-secondary btn-block">Cancel</a>
                  </div>
               </div>
               <br>
@@ -73,6 +73,7 @@
         <div id="ownerAdd-results" class="container"></div>
       </div>
     </div>
+    <?php include_once 'footer.php' ?>
   </div>
  
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>

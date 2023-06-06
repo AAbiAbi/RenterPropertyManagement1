@@ -73,7 +73,7 @@ while ($property_row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
   foreach ($property_row as $column => $value) {
     echo "<td>" . ($value !== null ? htmlentities($value, ENT_QUOTES) : "&nbsp;") . "</td>";
   }
-  echo "<td><button onclick='window.location.href=\"createLease.html?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
+  echo "<td><button onclick='window.location.href=\"createLease.php?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
 
 
 
