@@ -1,5 +1,5 @@
 // Wait for the document to be ready
-$(document).ready(function() {
+/*$(document).ready(function() {
     // Get the modal element
     var modal = document.getElementById("rentersModal");
   
@@ -47,4 +47,36 @@ $(document).ready(function() {
       }
     }
   });
+*/
+
+  $(document).ready(function() {
+    // ...
+    var span = document.getElementsByClassName("close")[0];
+    $('#fetchMultipleRenters').click(function() {
+      $.ajax({
+        type: 'GET',
+        url: 'fetchMultipleRenters.php',
+        dataType: 'html',
+        success: function(response) {
+          
+          // Update the modal content with the fetched data
+          $('#modalRentersList').html(response);
+          // Show the modal
+          $('#rentersModal').modal('show');
+        },
+        error: function() {
+          alert('An error occurred while fetching the frequent renters.');
+        }
+      });
+    });
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    
+  
+    // ...
+  });
+  
   

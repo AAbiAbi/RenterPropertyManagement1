@@ -49,11 +49,13 @@
                   <input type="date" id="date" name="date" class="form-control">
                 </div>
               </div>
-              
+              <div class="form-row align-items-center">
               <div class="form-group col-3">
                 <button type="button" id="newEmp-select" class="btn btn-primary btn-block">Add</button>
                  </div>
-              
+                 <div class="form-group col-3">
+                <a type="button" href="manager.html" class="btn btn-secondary btn-block">Cancel</a>
+                 </div></div>
               <br>
             </form>
           </div>
@@ -62,7 +64,7 @@
       </div>
     </div>
   </div>
-  <?php include 'footer.php'; ?>
+
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
    <script>
@@ -139,6 +141,7 @@
       var manager = $('#manager').val();
       var id = $('#id').val();
       var date = $('#date').val();
+      var role = 'supervisor';
       // Make an AJAX request to fetch the expiring properties
       $.ajax({
         type: 'POST',
@@ -149,7 +152,9 @@
             branch: branch,
             manager: manager,
             date: date,
-            id: id
+            id: id,
+            designation: role
+
         },
         dataType: 'html',
         success: function(response) {

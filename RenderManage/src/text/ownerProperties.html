@@ -38,11 +38,11 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="ownerName">Enter Owner Name:</label>
-            <input type="text" id="ownerName" name="ownerName" class="form-control">
+            <input type="text" id="ownerName" name="ownerName" class="form-control" required>
           </div>
           <div class="form-group col-md-3">
             <label for="ownerPhone">Enter Owner Phone:</label>
-            <input type="text" id="ownerPhone" name="ownerPhone" class="form-control">
+            <input type="text" id="ownerPhone" name="ownerPhone" class="form-control" required>
           </div>
           <div class="form-group col-md-3">
             <label for="branch">Enter Branch No:</label>
@@ -54,15 +54,14 @@
             <button type="button" id="owner-select" class="btn btn-primary btn-block">Search</button>
           </div>
         </div>
-        
-        <!--<button type="button" id="owner-select" class="btn btn-primary">Search</button>-->
-        <br>
+         <br>
       </form>
       
       </div>
      </div>
      
-    </div>
+    </div></div>
+    <div class="row">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-lg-5">
@@ -72,7 +71,7 @@
           <a href="property.php" class="btn btn-primary btn-block mt-3">Add A New Property</a>
         </div>
         </div>
-    </div>
+    </div></div><br><hr>
     <div id="owner-results" class="container"></div>
    </div>
     </div>
@@ -120,6 +119,18 @@
         $('form').on('submit', function(e) {
             var selectedBranch = $('#branch').val();
             $('#branchNumber').val(selectedBranch);
+
+           
+    var ownerName = $('#ownerName').val();
+    var ownerPhone = $('#ownerPhone').val();
+
+    // Validate the input fields
+    if (ownerName === '' || ownerPhone === '') {
+      alert('Please fill in all the required fields.');
+      return;
+    }
+
+
             // Display the value in the console
             console.log("branchnumber".selectedBranch);
 
@@ -132,6 +143,12 @@
       var owner = $('#ownerName').val();
       var phone = $('#ownerPhone').val();
       var branch = $('#branch').val();
+
+       // Validate the input fields
+    if (ownerName === '' || ownerPhone === '') {
+      alert('Please fill in all the fields.');
+      return;
+    }
       // Make an AJAX request to fetch the expiring properties
       $.ajax({
         type: 'POST',
@@ -139,7 +156,7 @@
         data: { 
             branch: branch,
             ownerName: owner,
-            ownerphone: phone
+            ownerPhone: phone
 
         },
         dataType: 'html',

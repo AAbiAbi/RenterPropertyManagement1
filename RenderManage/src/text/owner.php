@@ -22,11 +22,11 @@
             <hr>
             <form id="newOwnerForm" action="addOwner.php" method="post">
               <div class="form-row align-items-center">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="ownerName">Enter Owner's Name:</label>
                   <input type="text" id="ownerName" name="ownerName" class="form-control">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                 <label for="gender">Gender:</label>
 							<br>
 							<select class="form-control" id="gender" name="gender">
@@ -36,30 +36,36 @@
 								<option value="NA">I do not want to disclose</option>
 							</select>
                 </div>
-                <div class="form-group col-md-4">
+              </div>
+              <div class="form-row align-items-center">
+              <div class="form-group col-md-6">
                   <label for="phone">Enter Owner's Phone:</label>
                   <input type="text" id="phone" name="phone" class="form-control">
                 </div>
-              </div>
-              <div class="form-row align-items-center">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="street">Street:</label>
                   <input type="text" id="street" name="street" class="form-control">
                 </div>
-                <div class="form-group col-md-4">
+              </div>
+              <div class="form-row align-items-center">
+              <div class="form-group col-md-6">
                   <label for="city">City:</label>
                   <input type="text" id="city" name="city" class="form-control">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="zipcode">Zip Code:</label>
                   <input type="text" id="zipcode" name="zipcode" class="form-control">
                 </div>
               </div>
-              
+              <br>
+              <div class="form-row align-items-center">
               <div class="form-group col-3">
                 <button type="button" id="ownerAdd-select" class="btn btn-primary btn-block">Add</button>
                  </div>
-              
+                 <div class="form-group col-3">
+                 <a type="button" href="ownerProperties.html" class="btn btn-secondary btn-block">Cancel</a>
+                 </div>
+              </div>
               <br>
             </form>
           </div>
@@ -68,7 +74,7 @@
       </div>
     </div>
   </div>
-  <?php include 'footer.php'; ?>
+ 
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
    <script>

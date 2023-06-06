@@ -51,22 +51,7 @@ if (!empty($maxRent)) {
 oci_execute($stid);
 
 
-// Build the property listing HTML
-// $html = '<table>';
-// $html .= '<tr><th>RP Number</th><th>Street</th><th>City</th><th>Zip Code</th><th>Room No</th><th>Rent</th><th>Property Status</th><th>Owner Phone</th></tr>';
 
-// while ($propertyRow = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-//   $html .= '<tr>';
-//   foreach ($propertyRow as $item) {
-//     $html .= '<td>' . ($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp;') . '</td>';
-//   }
-//   $html .= '</tr>';
-// }
-
-// $html .= '</table>';
-
-// // Send the property listing HTML as the response
-// echo $html;
 echo "<br>\n";
 echo "<h1>Properties Available To Rent in ". $city ."</h1>";
 
@@ -88,8 +73,6 @@ while ($property_row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
   foreach ($property_row as $column => $value) {
     echo "<td>" . ($value !== null ? htmlentities($value, ENT_QUOTES) : "&nbsp;") . "</td>";
   }
-  //echo '<td><button class="btn btn-primary" onclick="createLeaseAgreement(' . $property_row['RPNUMBER'] . ')">Create Lease Agreement</button></td>';
-  //echo '<td><button class="btn btn-primary" onclick="window.location.href=\'createLease.html\'">Create Lease Agreement</button></td>';
   echo "<td><button onclick='window.location.href=\"createLease.html?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
 
 

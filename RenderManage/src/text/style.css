@@ -161,7 +161,8 @@ body
     position: relative;
     background-repeat: no-repeat;
       background-size: cover;
-      color: #b62f3d;
+      color: #082c3b;
+      font-weight: bold;
   }
  
 
@@ -189,5 +190,8 @@ body
   border-color: #f1e8de;
 }
 
-
+.form-control {
+  border: 2px solid black !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
 

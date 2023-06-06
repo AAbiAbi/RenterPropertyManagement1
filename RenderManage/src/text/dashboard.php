@@ -117,7 +117,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <div class="container">
           <div class="row">
             <div class="col">
-              <h6 class="mt-3">Show Monthly Income</h6>
+              <h5 class="mt-3">Show Monthly Income</h5>
               <div class="d-flex align-items-center">
                 <button class="btn btn-primary" id="calculateEarningsButton">Monthly Income</button>
                 &nbsp;&nbsp;
@@ -132,14 +132,29 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       </div>
     </div>
   </div>
-  <div id="rentersModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
+  <!--<div id="rentersModal" class="container">
+    <div class="content">
       <h3>Renters with Multiple Rentals</h3>
       <div id="modalRentersList"></div>
     </div>
+  </div>-->
+
+  <div class="modal fade" id="rentersModal" tabindex="-1" role="dialog" aria-labelledby="rentersModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rentersModalLabel">Renters with Multiple Rentals</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalRentersList"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-  <?php include 'footer.php'; ?>
+  
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

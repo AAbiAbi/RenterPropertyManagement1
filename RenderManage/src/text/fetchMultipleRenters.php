@@ -3,10 +3,7 @@
 $conn = oci_connect('nliang', '12345Jxtsz', '//oracle.engr.scu.edu:/db11g');
 
 // Prepare your SQL statement
-$sql = "SELECT renterName 
-        FROM LeaseAgreement 
-        GROUP BY renterName
-        HAVING COUNT(*) > 1";
+$sql = "";
 
 $stid = oci_parse($conn, $sql);
 
@@ -25,6 +22,8 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 // Close the Oracle connection
 oci_close($conn);
 
-// Return the result as JSON
-echo json_encode($renters);
+
+foreach ($renters as $renter) {
+    echo '<p>' . $renter . '</p>';
+}
 ?>

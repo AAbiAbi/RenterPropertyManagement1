@@ -91,10 +91,7 @@ if($manager_row){
         </tr>";
     while ($employee_row = oci_fetch_array($stid_employees, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<tr>";
-        // foreach ($employee_row as $item) {
-        //     echo($employee_row);
-        //     echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>";
-        // }
+
         foreach ($employee_row as $key => $value) {
             echo "<td>" . ($value !== null ? htmlentities($value, ENT_QUOTES) : "&nbsp;") . "</td>";
         }
@@ -130,9 +127,14 @@ if($manager_row){
         </tr>";
     while ($property_row = oci_fetch_array($stid_properties, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<tr>";
-        foreach ($property_row as $item) {
-            echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>";
-        }
+        foreach ($property_row as $key => $value) {
+            if($value==='available'){
+                echo "<td> Available <button onclick='window.location.href=\"createLease.html?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
+
+            }else{
+                echo "<td>" . $value . "</td>";
+            }
+         }
         echo "</tr>";
     }
     

@@ -63,9 +63,14 @@
                   <label for="ownerPhone">Owner Phone:</label>
                   <input type="text" id="ownerPhone" name="ownerPhone" class="form-control">
                 </div>
-              </div>
+              </div><br>
+              <div class="form-row align-items-center">
               <div class="form-group col-3">
                 <button type="button" id="newProperty-select" class="btn btn-primary btn-block">Add</button>
+              </div>
+              <div class="form-group col-3">
+                <a type="button" href="ownerProperties.html" class="btn btn-secondary btn-block">Cancel</a>
+              </div>
               </div>
               <br>
             </form>
@@ -82,32 +87,41 @@
     // Wait for the document to be ready
     $(document).ready(function() {
       
-    
-    $('#newProperty-select').click(function() {
-      var name = $('#ownerName').val();
-      var phone = $('#ownerPhone').val();
+      $('#newProperty-select').click(function() {
+      var rpNumber = $('#rpNumber').val();
       var street = $('#street').val();
       var city = $('#city').val();
       var zip = $('#zipcode').val();
+      var rooms = $('#rooms').val();
       var rent = $('#rent').val();
-      var room = $('#rooms').val();
-      var number = $('#rpNumber').val();
+      var ownerName = $('#ownerName').val();
+      var ownerPhone = $('#ownerPhone').val();
      
-      // Make an AJAX request to fetch the expiring properties
+      // Make an AJAX request to add the new property
       $.ajax({
         type: 'POST',
         url: 'addProperty.php',
-        data: { branch: selectedBranch },
+        data: { 
+          rpNumber: rpNumber,
+          street: street,
+          city: city,
+          zipcode: zip,
+          rooms: rooms,
+          rent: rent,
+          ownerName: ownerName,
+          ownerPhone: ownerPhone
+         },
         dataType: 'html',
         success: function(response) {
-          // Display the expiring properties in the designated div
+          // Display the response in the designated div
           $('#newProperty-results').html(response);
         },
         error: function() {
-          alert('An error occurred while fetching the expiring properties.');
+          alert('An error occurred while adding the new property.');
         }
       });
     });
+    
 });
   </script>
 </body>

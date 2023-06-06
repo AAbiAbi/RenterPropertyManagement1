@@ -74,7 +74,7 @@ if ($branch_row) {
     while ($employee_row = oci_fetch_array($stid_employees, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<tr>";
         foreach ($employee_row as $item) {
-            echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>";
+            echo "<td>" .  htmlentities($item, ENT_QUOTES) . "</td>";
         }
         echo "</tr>";
     }
@@ -118,7 +118,7 @@ if ($branch_row) {
     // Reset the pointer to the beginning of the result set
     oci_execute($stid_properties);
     echo "<h2>All Rental Properties managed by this Branch</h2>";
-    echo "Number of Properties Available to Rent: ". $numRows ."<hr>";
+    //echo "Number of Properties Available to Rent: ". $numRows ."<hr>";
     echo '<table class="table">';
     echo "<tr>
             <th>Property Number</th>
@@ -132,8 +132,14 @@ if ($branch_row) {
         </tr>";
     while ($property_row = oci_fetch_array($stid_properties, OCI_ASSOC+OCI_RETURN_NULLS)) {
         echo "<tr>";
-        foreach ($property_row as $item) {
-            echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>";
+        foreach ($property_row as $key => $value) {
+            
+            if($value==='available'){
+                echo "<td> Available <button onclick='window.location.href=\"createLease.html?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
+
+            }else{
+                echo "<td>" . $value . "</td>";
+            }
         }
         echo "</tr>";
     }
