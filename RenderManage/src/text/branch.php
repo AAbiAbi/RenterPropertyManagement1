@@ -36,7 +36,7 @@
       </div>
      
     </div>
-    <div id="branch-results" class="container"></div>
+    <div id="branch-results" class="custom-container"></div>
    </div>
    <?php include_once 'footer.php' ?>
     </div>

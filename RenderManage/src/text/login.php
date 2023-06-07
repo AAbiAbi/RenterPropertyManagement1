@@ -74,12 +74,12 @@ oci_close($conn);
 
 <body>
   <div class="container">
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-3 heading">
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
             <h5 class="text-center">StrawberryField Rental Management Inc</h5>
-          </div>
+           </div>
         </div>
       </div>
     </div>

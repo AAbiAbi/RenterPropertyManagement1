@@ -75,7 +75,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 echo "</table>";
 
 if (!$leaseFound) {
-    echo "<div class='text-danger'>No lease agreement found for this phone number.<div>";
+    echo "<div class='text-danger'>No lease agreement found.<div>";
 }
 
 
