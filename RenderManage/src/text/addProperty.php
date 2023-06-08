@@ -12,7 +12,9 @@ $rent = $_POST['rent'];
 $ownerName = $_POST['ownerName'];
 $ownerPhone = $_POST['ownerPhone'];
 $pstatus="available";
-
+if (!$rpNumber){
+    echo "<div class='text-danger'>No property number entered. Error inserting new rental property.</div>";
+}else{
 // Prepare your SQL statement
 $sql = "INSERT INTO RentalProperty (RPNumber, Street, City, Zipcode, RoomNo, Rent,OwnerPhone, PropertyStatus)
         VALUES (:rpNumber, :street, :city, :zipcode, :rooms, :rent, :ownerPhone, :pstatus)";
@@ -40,7 +42,7 @@ if ($result) {
     // Display an error message or perform any other action
     echo "<div class='text-danger'>Error inserting new rental property.</div>";
 }
-
+}
 // Close the Oracle connection
 oci_close($conn);
 ?>

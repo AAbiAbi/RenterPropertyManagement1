@@ -8,7 +8,9 @@ $ownerPhone = $_POST['phone'];
 $street = $_POST['street'];
 $city = $_POST['city'];
 $zipcode = $_POST['zip'];
-
+if(!$ownerPhone && !$ownerName){
+    echo "<div class='text-danger'>Error inserting new owner.</div>";
+}else{
 // Prepare your SQL statement
 $sql = "INSERT INTO Owner (OwnerName, OwnerPhone, Street, City, ZipCode)
         VALUES (:ownerName, :ownerPhone, :street, :city, :zipcode)";
@@ -32,7 +34,7 @@ if ($result) {
 } else {
     // Display an error message or perform any other action
     echo "<div class='text-danger'>Error inserting new owner.</div>";
-}
+}}
 
 // Close the Oracle connection
 oci_close($conn);

@@ -18,8 +18,7 @@
       <div class="container">
         <div class="col">
               <hr>
-              <h2>Lease Agreements Generated Successfully!</h2>
-              <br>
+              
 
 
 <?php
@@ -33,6 +32,18 @@ $renterHomePhone = $_POST['renterHomePhone'];
 $renterWorkPhone = $_POST['renterWorkPhone'];
 $startDate = $_POST['startDate'];
 $endDate = $_POST['endDate'];
+
+// Calculate the difference in months between the start and end dates
+$startDateObj = new DateTime($startDate);
+$endDateObj = new DateTime($endDate);
+$interval = $startDateObj->diff($endDateObj);
+$monthsDifference = $interval->m + ($interval->y * 12);
+
+// Check if the difference is less than 6 months
+if ($monthsDifference > 6) {
+
+
+
 
 // Prepare your SQL statement
 $sql = "INSERT INTO LeaseAgreement (RPNumber, RPStreet, RPCity, RPZipCode, rent, Deposite, renterName, renterHomePhone, renterWorkPhone, startDate, endDate) 
@@ -65,7 +76,10 @@ $row = oci_fetch_array($stid_lease, OCI_ASSOC+OCI_RETURN_NULLS);
 
 if (!$row) {
     echo "<div class='text-danger'>Error creating Lease Agreement.</div>";
+    exit;
 } else {
+    echo "<h2>Lease Agreements Generated Successfully!</h2>
+    <br>";
     echo "<table class='table'>";
     foreach ($row as $key => $value) {
         //echo "$key: $value<br>";
@@ -92,7 +106,7 @@ if (!$row) {
                 $label = "Renter Work Phone";
                 break;     
             case "RENT";
-                $label = "Renter Home Phone";
+                $label = "Rent";
                 $value = "$" . $value;
                 break;
             case "DEPOSITE";
@@ -111,7 +125,10 @@ if (!$row) {
     }
     echo "</table>";
 }
+}else{
+    echo "<div class='text-danger'>Cannot create Lease Agreement. The difference between the start date and end date cannot be less than 6 months.</div>";
 
+}
 
 oci_close($conn);
 

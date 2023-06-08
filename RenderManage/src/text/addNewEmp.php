@@ -10,7 +10,9 @@ $branch = $_POST['branch'];
 $manager = $_POST['manager'];
 $sdate = $_POST['date'];
 $designation = $_POST['designation'];
-
+if(!$id && !$sname){
+    echo "<div class='text-danger'>Cannot add new supervisor!<div>";
+}else{
 $managerIdStmt = oci_parse($conn, "SELECT EmployeeId FROM Employee WHERE EmpName = :manager");
 oci_bind_by_name($managerIdStmt, ":manager", $manager);
 oci_execute($managerIdStmt);
@@ -49,7 +51,7 @@ if(!$result){
 }else{
     echo "<div class='text-success'>New employee inserted successfully!<div>";
 }
-
+}
 // Close the Oracle connection
 oci_close($conn);
 ?>

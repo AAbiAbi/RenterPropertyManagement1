@@ -129,7 +129,7 @@ if($manager_row){
         echo "<tr>";
         foreach ($property_row as $key => $value) {
             if($value==='available'){
-                echo "<td> Available <button onclick='window.location.href=\"createLease.html?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
+                echo "<td> Available <button onclick='window.location.href=\"createLease.php?rpnumber=" . $property_row['RPNUMBER'] . "\"'>Create Lease Agreement</button></td>";
 
             }else{
                 echo "<td>" . $value . "</td>";
